@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "rishop-expo",
+    "slug": "rishop-expo"
+  }
+}
