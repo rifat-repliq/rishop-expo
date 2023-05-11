@@ -1,12 +1,17 @@
 import { Stack } from "expo-router";
-export default function _layout() {
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
+import HeaderCartIcon from "./components/common/HeaderCartIcon";
+
+export default function Layout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ title: "Home" }} />
-      <Stack.Screen
-        name="products/[id]"
-        options={{ title: "Product Detail" }}
+    <Provider store={store}>
+      <Stack
+        screenOptions={{
+          headerShown: true,
+          headerRight: () => <HeaderCartIcon />,
+        }}
       />
-    </Stack>
+    </Provider>
   );
 }

@@ -1,8 +1,12 @@
 import { useRouter } from "expo-router";
 import { View, Text, Image, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cart/cartSlice";
 
 export default function ProductCard({ product }) {
   const router = useRouter();
+  const dispatch = useDispatch();
+
   return (
     <TouchableOpacity
       onPress={() => router.push(`/products/${product.id}`)}
@@ -18,7 +22,10 @@ export default function ProductCard({ product }) {
           <Text className="text-lg font-bold">${product.price}</Text>
         </View>
         <View className="flex-row px-2 pb-2 justify-between items-center">
-          <TouchableOpacity className="bg-gray-700 rounded p-1">
+          <TouchableOpacity
+            onPress={() => dispatch(addToCart(product))}
+            className="bg-gray-700 rounded p-1"
+          >
             <Text className="text-white text-xs">Add To Cart</Text>
           </TouchableOpacity>
           <TouchableOpacity className="p-1 rounded border border-gray-500">
